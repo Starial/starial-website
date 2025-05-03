@@ -4,7 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const express = require("express");
 const app = express();
-const port = 4002;
+const PORT = process.env.PORT || 4002;
 const mongoose = require("mongoose");
 const cors = require("cors");
 const contactRoutes = require("./routers/contact-router");
@@ -28,8 +28,8 @@ mongoose
   .connect(url)
   .then(() => {
     console.log("Connected successfully to database.");
-    app.listen(port, () => {
-      console.log(`Listening on port : ${port}`);
+    app.listen(PORT, () => {
+      console.log(`Listening on port : ${PORT}`);
     });
   })
   .catch((e) => {
