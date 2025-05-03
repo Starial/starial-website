@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "argon2": "^0.43.0",
+    "axios": "^1.8.4",
+    "cloudinary": "^2.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.13.2",
+    "msg91": "^0.0.7",
+    "multer": "^1.4.5-lts.2",
+    "nodemailer": "^6.10.0",
+    "zod": "^3.24.2"
+  }
+}

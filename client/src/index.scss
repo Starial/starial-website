@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  user-select: none;
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+@mixin flex-box(
+  $justify-content: center,
+  $align-items: center,
+  $flex-dir: row
+) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  flex-direction: $flex-dir;
+}
+
+@mixin res-grid($width: 50%) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($width, 1fr));
+  place-items: center;
+}
+
+@mixin img-setting($width: 50%) {
+  width: $width;
+  object-fit: contain;
+  aspect-ratio: 3/2;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+$alice-blue: #f0f8ff;
+$argentinan-blue: #6cb4ee;
+$astros-navy: #002d62;
+$dark-blue: #004078;
