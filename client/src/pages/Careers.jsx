@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { toast } from "react-toastify";
 import ConfirmModal from "../modals/ConfirmModal";
+import { useAuth } from "../store/auth";
 
 const stats = [
   { title: "Team Members", count: "25+" },
@@ -18,7 +19,7 @@ const stats = [
 const perks = [
   "Certificate of Completion",
   "Letter of Recommendation (Based on Performance)",
-  "Real-World Exprience",
+  "Real-World Experience",
   "Skill Development",
   "Collaborative Team Culture",
 ];
@@ -55,6 +56,7 @@ export default function Careers() {
   const handleClick = (index) => {
     setOpenIndex((prev) => (prev === index ? null : index));
   };
+  const { authorizationToken } = useAuth();
   const settings = {
     dots: true,
     infinite: true,
@@ -134,6 +136,7 @@ export default function Careers() {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          Authorization: authorizationToken,
         },
       });
       const res_data = await res.json();

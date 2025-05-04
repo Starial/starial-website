@@ -3463,7 +3463,7 @@
     width: 90%;
     padding: 2rem;
     @include index.flex-box($flex-dir: column, $align-items: flex-start);
-    gap: 1rem;
+    gap: 2rem;
     h3 {
       font-size: 2.5rem;
       color: index.$dark-blue;

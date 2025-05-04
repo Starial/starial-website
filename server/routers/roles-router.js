@@ -8,9 +8,11 @@ const {
   showRoles,
 } = require("../controllers/roles-controller");
 const upload = require("../cloudinary/multer");
+const authMiddleware = require("../middlewares/auth-middleware");
 
 router.route("/").get(showRoles);
 router.route("/add").post(
+  authMiddleware,
   upload.single("file"),
   (req, res, next) => {
     console.log("req.body", req.body);
@@ -24,6 +26,6 @@ router.route("/add").post(
   validate(roleSchema),
   addRole
 );
-router.route("/:id/delete").delete(deleteRole);
+router.route("/:id/delete").delete(authMiddleware, deleteRole);
 
 module.exports = router;

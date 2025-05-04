@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useAuth } from "../store/auth";
 
 const initialData = {
   img: null,
@@ -11,6 +12,7 @@ export default function AddRoles() {
   const [newRole, setNewRole] = useState(initialData);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { authorizationToken } = useAuth();
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     setNewRole((prev) => {
@@ -60,6 +62,9 @@ export default function AddRoles() {
       setLoading(true);
       const res = await fetch("http://localhost:4002/api/roles/add", {
         method: "POST",
+        headers: {
+          Authorization: authorizationToken,
+        },
         body: formData,
       });
       const res_data = await res.json();

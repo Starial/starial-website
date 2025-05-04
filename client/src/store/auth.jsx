@@ -4,6 +4,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("auth-token"));
+  const authorizationToken = `Bearer ${token}`;
   useEffect(() => {
     const storedToken = localStorage.getItem("auth-token");
     if (storedToken) setToken(storedToken);
@@ -17,7 +18,9 @@ export const AuthProvider = ({ children }) => {
     return localStorage.removeItem("auth-token");
   };
   return (
-    <AuthContext.Provider value={{ token, storeTokenInLS, logoutUser }}>
+    <AuthContext.Provider
+      value={{ token, storeTokenInLS, logoutUser, authorizationToken }}
+    >
       {children}
     </AuthContext.Provider>
   );
