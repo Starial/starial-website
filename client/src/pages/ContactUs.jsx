@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import StatusModal from "../modals/StatusModal";
-// import axios from "axios";
 
 const initialData = {
   fullname: "",
@@ -13,6 +12,7 @@ export default function ContactUs() {
   const [error, setError] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setContactData((prev) => {
@@ -21,23 +21,8 @@ export default function ContactUs() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // try {
-    //   await axios.post("http://localhost:5002/api/contact", contactData, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
-    //   console.log("Message sent successfully.");
-    //   setSuccess("Message sent successfully.");
-    //   setOpenModal(true);
-    //   setContactData(initialData);
-    // } catch (e) {
-    //   console.error("Error: ", e);
-    //   setOpenModal(true);
-    //   setError(e.reponse?.data?.extraDetails || e.message);
-    //   console.error("Error while sending message.", e);
-    // }
     try {
+      setLoading(true);
       const response = await fetch("http://localhost:5002/api/contact", {
         method: "POST",
         headers: {
@@ -48,20 +33,24 @@ export default function ContactUs() {
       const res_data = await response.json();
       console.log("Response from contact form:", res_data);
       if (response.ok) {
+        setLoading(false);
         console.log("Message sent successfully.");
         setSuccess("Message sent successfully.");
         setOpenModal(true);
         setContactData(initialData);
       } else {
+        setLoading(false);
         console.error("Error: ");
         setOpenModal(true);
         setError(
           res_data.extraDetails ? res_data.extraDetails : res_data.message
         );
-        // console.error("Error while sending message.");
       }
     } catch (e) {
+      setLoading(false);
       console.error(e.message);
+      setError("Unable to send message.");
+      setOpenModal(true);
     }
   };
   useEffect(() => {
@@ -95,6 +84,8 @@ export default function ContactUs() {
             placeholder="Fullname"
             value={contactData.fullname}
             onChange={handleChange}
+            autoComplete="off"
+            required
           />
           <div>
             <input
@@ -103,6 +94,8 @@ export default function ContactUs() {
               placeholder="Email"
               value={contactData.email}
               onChange={handleChange}
+              autoComplete="off"
+              required
             />
             <input
               type="tel"
@@ -110,6 +103,8 @@ export default function ContactUs() {
               placeholder="Phone"
               value={contactData.phoneNumber}
               onChange={handleChange}
+              autoComplete="off"
+              required
             />
           </div>
           <textarea
@@ -118,8 +113,10 @@ export default function ContactUs() {
             placeholder="Message"
             value={contactData.message}
             onChange={handleChange}
+            autoComplete="off"
+            required
           ></textarea>
-          <button type="submit">Send</button>
+          <button type="submit">{loading ? "Sending..." : "Send"}</button>
         </form>
       </div>
     </section>

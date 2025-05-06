@@ -3,13 +3,14 @@
 .head-section {
   width: 100%;
   height: 10vh;
-  position: sticky;
+  position: -webkit-sticky;
   top: 0;
   left: 0;
   z-index: 1000;
   @include index.flex-box;
   padding: 1rem;
-  box-shadow: 2px 2px 7px #dcdcdc;
+  // box-shadow: 2px 2px 7px #dcdcdc;
+  border-bottom: 1px solid #f0f0f0;
   background-color: white;
   .logo {
     width: 50%;
@@ -45,6 +46,7 @@
           position: absolute;
           bottom: 0;
           left: 0;
+          -webkit-transition: width 200ms ease-in;
           transition: width 200ms ease-in;
           background-color: index.$astros-navy;
         }
@@ -57,6 +59,7 @@
         padding: 0.6rem 1rem;
         border-radius: 5px;
         color: index.$alice-blue;
+        -webkit-transition: all 0.2s ease-in;
         transition: all 0.2s ease-in;
         border: 2px solid transparent;
         &:hover {
@@ -117,25 +120,31 @@
       z-index: 1;
       .links {
         width: 40%;
-        height: 90vh;
+        height: calc(100vh - 10vh);
         position: fixed;
         top: 10%;
         left: 0;
         bottom: 0;
         flex-direction: column;
+        -webkit-transform: translateX(-100%);
         transform: translateX(-100%);
+        -webkit-transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
         transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
         padding: 0 2rem;
         align-items: flex-start;
         justify-content: center;
         gap: 2rem;
-        // background: linear-gradient(135deg, #37fe37, #b8ffb8, #fefea4);
         background-color: #93d9ff;
-        filter: drop-shadow(5px 5px 5px #242424);
         z-index: 1000;
+        will-change: transform;
+        backface-visibility: hidden;
         &.open {
           display: flex;
+          -webkit-transform: translateX(0);
           transform: translateX(0);
+          // filter: drop-shadow(5px 5px 5px #c2c2c263);
+          -webkit-filter: drop-shadow(5px 5px 5px #45454546);
+          filter: drop-shadow(5px 5px 5px #45454546);
         }
         .home-link {
           border-right: none;
@@ -152,10 +161,10 @@
             }
           }
         }
-        @media (width<=900px) {
+        @media (max-width: 900px) {
           width: 50%;
         }
-        @media (width<=600px) {
+        @media (max-width: 600px) {
           width: 70%;
         }
         @media (max-width: 500px) {
@@ -601,15 +610,11 @@
   h2 {
     font-size: 3rem;
     padding: 1rem;
-    // font-weight: 400;
     text-align: center;
-    // border-bottom: 2px solid #00b7ff;
     color: index.$astros-navy;
-    // border-bottom: 2px solid index.$argentinan-blue;
   }
   .categories {
     max-width: 100%;
-    // overflow: hidden;
     margin: 0 auto;
     @include index.res-grid(calc(100% / 3));
     padding: 2rem;
@@ -632,20 +637,11 @@
         img {
           width: 70%;
           height: 70%;
-          // filter: drop-shadow(5px 5px 5px #b6b6b6);
         }
       }
       a {
         width: fit-content;
-        // right: 0;
-        // padding: 0.5rem 1rem;
-        // position: absolute;
-        // top: 5%;
-        // border-radius: 20px 0 0 20px;
-        // text-align: right;
         font-size: 1.3rem;
-        // background-color: index.$astros-navy;
-        // color: white;
       }
       &:hover {
         scale: 1.05;
@@ -879,7 +875,6 @@
   .about-app {
     width: 80%;
     @include index.flex-box($flex-dir: column, $align-items: flex-start);
-    // height: 400px;
     gap: 1rem;
     padding: 3rem;
     border-radius: 5px;
@@ -890,7 +885,6 @@
     }
     h4 {
       font-size: 2.5rem;
-      // font-weight: 400;
       color: index.$astros-navy;
     }
     p {
@@ -1677,25 +1671,6 @@
       font-size: 3rem;
       text-align: center;
     }
-    // .search-container {
-    //   width: 100%;
-    //   @include index.flex-box($flex-dir: column);
-    //   gap: 0.5rem;
-    //   margin-top: 3%;
-    //   input {
-    //     width: 50%;
-    //     border-radius: 50px;
-    //     border: 2px solid index.$dark-blue;
-    //     font-size: 1rem;
-    //     padding: 0.7rem 1rem;
-    //     &::placeholder {
-    //       color: index.$dark-blue;
-    //     }
-    //   }
-    //   p {
-    //     color: index.$dark-blue;
-    //   }
-    // }
     .cate-go-ries {
       width: 100%;
       @include index.flex-box($flex-dir: column);
@@ -1819,11 +1794,6 @@
             font-size: 2rem;
           }
         }
-        // .search-container {
-        //   input {
-        //     width: 70%;
-        //   }
-        // }
       }
     }
   }
@@ -1896,8 +1866,6 @@
           width: 60%;
           font-size: 4rem;
           margin-bottom: 3%;
-          // text-shadow: 5px 5px white;
-          // color: index.$dark-blue;
           text-shadow: 5px 5px black;
         }
         p {
@@ -2051,12 +2019,14 @@
             @media (max-width: 900px) {
               h3 {
                 font-size: 2.5rem;
-                @media (max-width: 468px) {
-                  font-size: 1.5rem;
-                }
               }
               p {
                 font-size: 1rem;
+              }
+            }
+            @media (max-width: 468px) {
+              h3 {
+                font-size: 1.5rem;
               }
             }
           }
@@ -2092,7 +2062,7 @@
           border-radius: inherit;
           object-fit: cover;
         }
-        @media (width<=500px) {
+        @media (max-width: 500px) {
           margin-top: 0;
           width: 100%;
         }
@@ -2106,10 +2076,10 @@
       padding: 2rem;
       gap: 2rem;
       @include index.flex-box($flex-dir: column);
-      // background-color: pink;
       div {
         width: 100%;
         @include index.res-grid(calc(100% / 5));
+        grid-template-columns: repeat(4, 1fr);
         gap: 1rem;
         justify-content: center;
         place-content: center;
@@ -2126,6 +2096,7 @@
           border-radius: 5px;
           background-color: grey;
           margin-bottom: 5%;
+          position: relative;
           img {
             width: 100%;
             height: 100%;
@@ -2163,8 +2134,10 @@
         padding: 1rem;
         div {
           @include index.res-grid(calc(100% / 4));
+          grid-template-columns: repeat(3, 1fr);
           @media (max-width: 900px) {
             @include index.res-grid(calc(100% / 3));
+            grid-template-columns: repeat(2, 1fr);
             .member {
               width: 80%;
               @media (max-width: 700px) {

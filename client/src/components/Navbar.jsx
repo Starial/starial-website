@@ -8,22 +8,8 @@ import { useAuth } from "../store/auth";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
-  // const navRef = useRef(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const { token } = useAuth();
-  // useEffect(() => {
-  //   const handleOutsideClick = (event) => {
-  //     if (isOpen && navRef.current && !navRef.current.contains(event.target)) {
-  //       setIsOpen(false);
-  //     }
-  //   };
-  //   if (isOpen) {
-  //     document.addEventListener("click", handleOutsideClick);
-  //   }
-  //   return () => {
-  //     document.removeEventListener("click", handleOutsideClick);
-  //   };
-  // }, [isOpen]);
   useEffect(() => {
     const checkAdmin = () => {
       if (!token) setIsAdmin(false);
