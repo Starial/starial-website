@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import StatusModal from "../modals/StatusModal";
+import { useState } from "react";
+// import StatusModal from "../modals/StatusModal";
+import { toast } from "react-toastify";
 
 const initialData = {
   fullname: "",
@@ -10,7 +11,7 @@ const initialData = {
 export default function ContactUs() {
   const [contactData, setContactData] = useState(initialData);
   const [error, setError] = useState("");
-  const [openModal, setOpenModal] = useState(false);
+  // const [openModal, setOpenModal] = useState(false);
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
   const handleChange = (e) => {
@@ -34,41 +35,44 @@ export default function ContactUs() {
       console.log("Response from contact form:", res_data);
       if (response.ok) {
         setLoading(false);
-        console.log("Message sent successfully.");
+        // console.log("Message sent successfully.");
         setSuccess("Message sent successfully.");
-        setOpenModal(true);
+        // setOpenModal(true);
+        toast.success(success);
         setContactData(initialData);
       } else {
         setLoading(false);
-        console.error("Error: ");
-        setOpenModal(true);
+        // console.error("Error: ");
+        // setOpenModal(true);
         setError(
           res_data.extraDetails ? res_data.extraDetails : res_data.message
         );
+        toast.error(error);
       }
     } catch (e) {
       setLoading(false);
       console.error(e.message);
       setError("Unable to send message.");
-      setOpenModal(true);
+      toast.error(error);
+      // setOpenModal(true);
     }
   };
-  useEffect(() => {
-    if (openModal) {
-      const timer = setTimeout(() => {
-        setOpenModal(false);
-      }, 3000);
-      return () => clearInterval(timer);
-    }
-  });
+  // useEffect(() => {
+  //   if (openModal) {
+  //     const timer = setTimeout(() => {
+  //       setOpenModal(false);
+  //     }, 3000);
+  //     return () => clearInterval(timer);
+  //   }
+  // });
   return (
     <section className="contact-section" id="contact-us">
-      <StatusModal
+      {/* <StatusModal
         msg={error ? error : success}
         statusType={error ? "error" : "success"}
         onClose={() => setOpenModal(false)}
         isOpen={openModal}
-      />
+      /> */}
       <div className="contact-decor">
         <img
           src="https://res.cloudinary.com/dgkv2gft7/image/upload/v1743691469/contact-bg_ucvxx5.png"

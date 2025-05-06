@@ -30,17 +30,17 @@ export default function Vendors() {
     {
       title: "Submit Your Application",
       desc: "Fill out the contact form below to apply. Our team will review your details and verify your profile.",
-      img: "/verification.svg",
+      img: "https://res.cloudinary.com/dgkv2gft7/image/upload/v1746554363/verification_vwbqf5.svg",
     },
     {
       title: "Get a Seller App",
       desc: "Once verified, you’ll receive access to the Seller App where you can manage products, view analytics, and more.",
-      img: "/application.svg",
+      img: "https://res.cloudinary.com/dgkv2gft7/image/upload/v1746554362/application_ovyyvq.svg",
     },
     {
       title: "Start Selling",
       desc: "After final confirmation, your store goes live and you can begin selling on our platform.",
-      img: "/sell.svg",
+      img: "https://res.cloudinary.com/dgkv2gft7/image/upload/v1746554362/sell_d8uhf3.svg",
     },
   ];
   return (
