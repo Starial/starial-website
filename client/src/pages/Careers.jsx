@@ -14,7 +14,7 @@ import { useAuth } from "../store/auth";
 const stats = [
   { title: "Team Members", count: "25+" },
   { title: "Happy Clients", count: "10+" },
-  { title: "Interns Trained", count: "170+" },
+  { title: "Interns Trained", count: "300+" },
 ];
 const perks = [
   "Certificate of Completion",
