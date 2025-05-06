@@ -52,7 +52,7 @@ export default function Vendors() {
         </p>
       </div>
       <div className="sellers-testimonies">
-        <h2>Shop That Trust Us</h2>
+        <h2>Shops That Trust Us</h2>
         <div className="sellers">
           {sellers.map((seller, index) => {
             return (
