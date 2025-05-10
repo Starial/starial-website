@@ -16,7 +16,7 @@ const applicantRoutes = require("./routers/applicant-router");
 const adminRoutes = require("./routers/admin-router");
 
 const corsConfig = {
-  origin: "http://localhost:5173",
+  origin: process.env.CLIENT_ORIGIN || "http://localhost:5173",
   methods: "GET, POST, PUT, PATCH, HEAD, DELETE",
   credentials: true,
 };
