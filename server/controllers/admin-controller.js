@@ -24,10 +24,10 @@ const login = async (req, res, next) => {
           userId: userExist._id.toString(),
         });
       } else {
-        return res.status(401).json("Invalid Email or password.");
+        return res.status(401).json({ message: "Invalid Email or password." });
       }
     } else {
-      return res.status(400).json("Invalid credentials.");
+      return res.status(400).json({ message: "Invalid credentials." });
     }
   } catch (e) {
     console.error("Error while logging in!");
