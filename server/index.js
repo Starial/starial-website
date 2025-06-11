@@ -14,6 +14,7 @@ const roleRoutes = require("./routers/roles-router");
 const url = process.env.MONGODB_URL;
 const applicantRoutes = require("./routers/applicant-router");
 const adminRoutes = require("./routers/admin-router");
+const blogRoutes = require("./routers/blog-router");
 
 const corsConfig = {
   origin: "http://localhost:5173",
@@ -41,4 +42,5 @@ app.use("/api/contact", contactRoutes);
 app.use("/api/download", downloadRoutes);
 app.use("/api/roles", roleRoutes);
 app.use("/api/applicants", applicantRoutes);
+app.use("/api/blogs", blogRoutes);
 app.use(ErrorMiddleware);
