@@ -10,6 +10,7 @@ import Slider from "react-slick";
 import { toast } from "react-toastify";
 import ConfirmModal from "../modals/ConfirmModal";
 import { useAuth } from "../store/auth";
+import { baseUrl } from "../App";
 
 const stats = [
   { title: "Team Members", count: "25+" },
@@ -108,7 +109,7 @@ export default function Careers() {
   }, []);
   const fetchRoles = async () => {
     try {
-      const res = await fetch("http://localhost:4002/api/roles", {
+      const res = await fetch(`${baseUrl}roles`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -132,7 +133,7 @@ export default function Careers() {
   }, []);
   const deleteRole = async (id) => {
     try {
-      const res = await fetch(`http://localhost:4002/api/roles/${id}/delete`, {
+      const res = await fetch(`${baseUrl}roles/${id}/delete`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

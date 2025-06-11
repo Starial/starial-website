@@ -1,6 +1,7 @@
 import { useState } from "react";
 // import StatusModal from "../modals/StatusModal";
 import { toast } from "react-toastify";
+import { baseUrl } from "../App";
 
 const initialData = {
   fullname: "",
@@ -24,7 +25,7 @@ export default function ContactUs() {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:5002/api/contact", {
+      const response = await fetch(`${baseUrl}contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

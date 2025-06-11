@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../store/auth";
+import { baseUrl } from "../App";
 
 const initialData = {
   img: null,
@@ -60,7 +61,7 @@ export default function AddRoles() {
     formData.append("title", newRole.title);
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:4002/api/roles/add", {
+      const res = await fetch(`${baseUrl}roles/add`, {
         method: "POST",
         headers: {
           Authorization: authorizationToken,

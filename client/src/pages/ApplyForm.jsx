@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { baseUrl } from "../App";
 
 const initialData = {
   fullname: "",
@@ -51,7 +52,7 @@ export default function ApplyForm() {
     formData.append("role", user.role);
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:4002/api/applicants/new", {
+      const res = await fetch(`${baseUrl}applicants/new`, {
         method: "POST",
         body: formData,
       });

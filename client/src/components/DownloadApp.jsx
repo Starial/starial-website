@@ -4,6 +4,7 @@ import { FaApple } from "react-icons/fa";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { baseUrl } from "../App";
 
 export default function DownloadApp() {
   // const [isPhoneSelected, setIsPhoneSelected] = useState(false);
@@ -15,7 +16,7 @@ export default function DownloadApp() {
     try {
       if (email) {
         const res = await fetch(
-          "http://localhost:4002/api/download/using-email",
+          `${baseUrl}download/using-email`,
           {
             method: "POST",
             headers: {

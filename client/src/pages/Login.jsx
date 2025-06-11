@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../store/auth";
+import { baseUrl } from "../App";
 
 export default function Login() {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -19,7 +20,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:4002/api/admin/login", {
+      const res = await fetch(`${baseUrl}admin/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

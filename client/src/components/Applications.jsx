@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import ConfirmModal from "../modals/ConfirmModal";
 import { useAuth } from "../store/auth";
+import { baseUrl } from "../App";
 
 export default function Applications() {
   const [applications, setApplications] = useState([]);
@@ -28,7 +29,7 @@ export default function Applications() {
   };
   const fetchApplications = async () => {
     try {
-      const res = await fetch("http://localhost:4002/api/applicants/", {
+      const res = await fetch(`${baseUrl}applicants/`, {
         method: "GET",
         headers: {
           Authorization: authorizationToken,
@@ -54,7 +55,7 @@ export default function Applications() {
   const deleteApplication = async (id) => {
     try {
       const res = await fetch(
-        `http://localhost:4002/api/applicants/${id}/delete`,
+        `${baseUrl}applicants/${id}/delete`,
         {
           method: "DELETE",
           headers: {

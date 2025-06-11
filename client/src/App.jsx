@@ -26,6 +26,8 @@ import Logout from "./pages/Logout";
 import AdminPanel from "./pages/AdminPanel";
 import Applications from "./components/Applications";
 
+export const baseUrl = import.meta.env.VITE_BASE_URL;
+
 function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -52,7 +54,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/download-app" element={<DownloadApp />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
-          <Route path="privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
           <Route path="/return-policy" element={<ReturnPolicy />} />
           <Route path="/vendors" element={<Vendors />} />
