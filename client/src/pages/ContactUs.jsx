@@ -1,7 +1,7 @@
 import { useState } from "react";
 // import StatusModal from "../modals/StatusModal";
 import { toast } from "react-toastify";
-import { baseUrl } from "../App";
+import baseUrl from "../config";
 
 const initialData = {
   fullname: "",

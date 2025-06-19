@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import ContactUs from "./ContactUs";
-import { NavLink } from "react-router-dom";
 
 export default function Vendors() {
   const contactRef = useRef(null);

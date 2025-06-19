@@ -4,7 +4,7 @@ import { FaApple } from "react-icons/fa";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { baseUrl } from "../App";
+import baseUrl from "../config";
 
 export default function DownloadApp() {
   // const [isPhoneSelected, setIsPhoneSelected] = useState(false);
@@ -15,16 +15,13 @@ export default function DownloadApp() {
     e.preventDefault();
     try {
       if (email) {
-        const res = await fetch(
-          `${baseUrl}download/using-email`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email: email }),
-          }
-        );
+        const res = await fetch(`${baseUrl}download/using-email`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: email }),
+        });
         if (res.ok) {
           console.log("Message sent!");
           toast.success(

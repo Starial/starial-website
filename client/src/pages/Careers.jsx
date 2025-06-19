@@ -10,7 +10,7 @@ import Slider from "react-slick";
 import { toast } from "react-toastify";
 import ConfirmModal from "../modals/ConfirmModal";
 import { useAuth } from "../store/auth";
-import { baseUrl } from "../App";
+import baseUrl from "../config";
 
 const stats = [
   { title: "Team Members", count: "25+" },

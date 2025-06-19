@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { baseUrl } from "../App";
+import baseUrl from "../config";
 
 const initialData = {
   fullname: "",

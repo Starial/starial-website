@@ -26,8 +26,6 @@ import Logout from "./pages/Logout";
 import AdminPanel from "./pages/AdminPanel";
 import Applications from "./components/Applications";
 
-export const baseUrl = import.meta.env.VITE_BASE_URL;
-
 function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {

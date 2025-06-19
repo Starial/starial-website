@@ -1,5 +1,3 @@
-import Policies from "./Policies";
-
 export default function ReturnPolicy() {
   return (
     <section className="return-policy">
@@ -19,15 +17,15 @@ export default function ReturnPolicy() {
           improve the services, it is mandatory to share the images of the items
           which you were dissatisfied with. Subject to acceptance from the
           third-party seller of the product, the Company may take the
-          replacement product back and deliver new product at same time.You can
+          replacement product back and deliver new product at same time. You can
           replace If product got broken, cracked, scratched under the pack.
-          (this condition will apply when customer complain about product under
+          (This condition will apply when customer complain about product under
           2 hours after getting product and company will get back the product
           under 24 hours from customer and send to vendor and after changing
-          same product will again deliver to the customer.Please note: Few items
-          listed may or may not carry a seller warranty to which Starial will
-          support basis replacement policy.Only one replacement can be done per
-          order.
+          same product will again deliver to the customer). Please note: Few
+          items listed may or may not carry a seller warranty to which Starial
+          will support basis replacement policy. Only one replacement can be
+          done per order.
         </p>
       </div>
     </section>

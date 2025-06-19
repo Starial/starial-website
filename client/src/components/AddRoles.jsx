@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../store/auth";
-import { baseUrl } from "../App";
+import baseUrl from "../config";
 
 const initialData = {
   img: null,

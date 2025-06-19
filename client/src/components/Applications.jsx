@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import ConfirmModal from "../modals/ConfirmModal";
 import { useAuth } from "../store/auth";
-import { baseUrl } from "../App";
+import baseUrl from "../config";
 
 export default function Applications() {
   const [applications, setApplications] = useState([]);
@@ -54,16 +54,13 @@ export default function Applications() {
   // Delete functionality
   const deleteApplication = async (id) => {
     try {
-      const res = await fetch(
-        `${baseUrl}applicants/${id}/delete`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: authorizationToken,
-          },
-        }
-      );
+      const res = await fetch(`${baseUrl}applicants/${id}/delete`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: authorizationToken,
+        },
+      });
       const res_data = await res.json();
       if (res.ok) {
         fetchApplications();
