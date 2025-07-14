@@ -38,7 +38,7 @@ function App() {
     duration: 1000,
   });
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/web">
       <ScrollToTop />
       <ToastContainer theme="light" draggable />
       <Navbar />
