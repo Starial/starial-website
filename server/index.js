@@ -28,6 +28,7 @@ const allowedOrigins = process.env.FRONTEND_URLS.split(",").map((url) =>
 
 const corsConfig = {
   origin: (origin, callback) => {
+    console.log(`Allowed origin: ${origin}`);
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
