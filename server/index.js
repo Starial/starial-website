@@ -16,8 +16,24 @@ const applicantRoutes = require("./routers/applicant-router");
 const adminRoutes = require("./routers/admin-router");
 const blogRoutes = require("./routers/blog-router");
 
+// const corsConfig = {
+//   origin: process.env.FRONTEND_URL,
+//   methods: "GET, POST, PUT, PATCH, HEAD, DELETE",
+//   credentials: true,
+// };
+
+const allowedOrigins = process.env.FRONTEND_URLS.split(",").map((url) =>
+  url.trim()
+);
+
 const corsConfig = {
-  origin: process.env.FRONTEND_URL,
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: "GET, POST, PUT, PATCH, HEAD, DELETE",
   credentials: true,
 };

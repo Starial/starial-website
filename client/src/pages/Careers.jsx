@@ -238,7 +238,7 @@ export default function Careers() {
           ) : (
             <div className="no-hirings">
               <p>No hirings posted.</p>
-              <img src="/not-found.svg" alt="" />
+              <img src="not-found.svg" alt="No openings posted." />
             </div>
           )}
         </div>
