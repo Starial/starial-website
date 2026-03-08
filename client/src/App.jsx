@@ -29,16 +29,17 @@ import Applications from "./components/Applications";
 function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setLoading(false);
     }, 1500);
-  });
+    return () => clearTimeout(timer);
+  }, []);
   AOS.init({
     offset: 300,
     duration: 1000,
   });
   return (
-    <BrowserRouter basename="/web">
+    <BrowserRouter>
       <ScrollToTop />
       <ToastContainer theme="light" draggable />
       <Navbar />
