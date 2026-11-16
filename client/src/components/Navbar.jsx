@@ -40,8 +40,12 @@ export default function Navbar() {
       <div className="logo">
         <NavLink to="/">
           <img
-            src="https://res.cloudinary.com/dgkv2gft7/image/upload/v1743688541/starial-black-logo_u6xvbw.png"
+            src={isScrolled 
+              ? "https://res.cloudinary.com/dgkv2gft7/image/upload/v1743688541/starial-black-logo_u6xvbw.png"
+              : "https://res.cloudinary.com/dgkv2gft7/image/upload/v1743688541/starial-black-logo_u6xvbw.png"
+            }
             alt="Starial LOGO"
+            style={!isScrolled ? { filter: 'brightness(0) invert(1)' } : {}}
           />
         </NavLink>
       </div>
