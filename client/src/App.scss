@@ -10,9 +10,15 @@
   z-index: 1000;
   @include index.flex-box;
   padding: 1rem;
-  // box-shadow: 2px 2px 7px #dcdcdc;
-  border-bottom: 1px solid #f0f0f0;
-  background-color: white;
+  border-bottom: 1px solid transparent;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+  
+  &.scrolled {
+    background-color: white;
+    border-bottom: 1px solid #f0f0f0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
   .logo {
     width: 50%;
     padding-left: 1.5rem;
@@ -187,10 +193,8 @@
 .intro-part {
   width: 100%;
   height: 90vh;
-  @include index.res-grid;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(to bottom, #ffffff, #93d9ff);
   
   .hero-video-background {
     position: absolute;
@@ -200,144 +204,6 @@
     height: 100%;
     object-fit: cover;
     z-index: 0;
-    opacity: 0.8;
-  }
-  
-  .intro-content-overlay {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    @media (max-width: 1150px) {
-      grid-template-columns: 100%;
-    }
-  }
-  
-  .intro-img {
-    width: 100%;
-    height: 100%;
-    @include index.flex-box($align-items: flex-end);
-    // background: url("intro-img1.png");
-    background: url("https://res.cloudinary.com/dgkv2gft7/image/upload/v1743688081/intro-img1_hfpnht.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    img {
-      width: 100%;
-      height: 700px;
-      padding-bottom: 5%;
-      object-fit: contain;
-    }
-  }
-  @media (max-width: 1150px) {
-    @include index.res-grid(100%);
-    height: auto;
-    .intro-img {
-      background-size: cover;
-      @media (max-width: 600px) {
-        background-position: translateX(200px);
-      }
-    }
-  }
-  .intro {
-    width: 100%;
-    height: 100%;
-    @include index.flex-box;
-    // background: url("intro-img2.png");
-    background: url("https://res.cloudinary.com/dgkv2gft7/image/upload/v1743688077/intro-img2_drgtio.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    .intro-heading {
-      @include index.flex-box($flex-dir: column, $align-items: flex-start);
-      gap: 1rem;
-      padding-left: 15%;
-      div {
-        h2 {
-          font-size: 4rem;
-          font-weight: 600;
-          color: index.$astros-navy;
-        }
-        .word-carousel {
-          text-decoration: underline;
-          font-size: 6rem;
-          font-weight: bold;
-          color: index.$astros-navy;
-        }
-      }
-      p {
-        width: 80%;
-        font-size: 1.1rem;
-      }
-      a {
-        background-color: white;
-        padding: 0.6rem 1rem;
-        border-radius: 50px;
-        font-weight: bold;
-        border: 1px solid index.$astros-navy;
-        color: index.$astros-navy;
-        transition: all 0.2s ease-in;
-        &:hover {
-          scale: 1.05;
-          background-color: index.$astros-navy;
-          color: white;
-        }
-      }
-      @media (max-width: 1320px) {
-        padding-left: 5%;
-      }
-      @media (max-width: 1150px) {
-        padding-left: 0;
-      }
-    }
-    @media (width<=1150px) {
-      background-size: cover;
-      .intro-heading {
-        padding-top: 5%;
-        align-items: center;
-        p {
-          text-align: center;
-        }
-        div {
-          @include index.flex-box($flex-dir: column);
-          @media (max-width: 600px) {
-            h2 {
-              font-size: 3rem;
-            }
-            .word-carousel {
-              font-size: 4rem;
-            }
-          }
-          @media (max-width: 500px) {
-            h2 {
-              font-size: 2rem;
-            }
-            .word-carousel {
-              // padding: 2.5rem 0;
-              font-size: 3rem;
-            }
-          }
-        }
-      }
-    }
-  }
-  @media (max-width: 468px) {
-    .intro-img {
-      img {
-        height: 500px;
-      }
-    }
-    .intro {
-      .intro-heading {
-        padding-top: 20%;
-        gap: 0.7rem;
-        p {
-          width: 70%;
-          font-size: 1rem;
-        }
-      }
-    }
   }
 }
 

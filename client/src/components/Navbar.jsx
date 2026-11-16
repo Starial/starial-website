@@ -7,9 +7,11 @@ import { useAuth } from "../store/auth";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
   const [isAdmin, setIsAdmin] = useState(false);
   const { token } = useAuth();
+  
   useEffect(() => {
     const checkAdmin = () => {
       if (!token) setIsAdmin(false);
@@ -19,8 +21,22 @@ export default function Navbar() {
     };
     checkAdmin();
   }, [token]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="head-section">
+    <header className={`head-section ${isScrolled ? "scrolled" : ""}`}>
       <div className="logo">
         <NavLink to="/">
           <img
