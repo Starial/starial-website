@@ -42,8 +42,18 @@ export default function Navbar() {
     ? `head-section ${isScrolled ? "scrolled" : "transparent"}`
     : "head-section scrolled";
 
+  // Inline styles to force transparency
+  const headerStyle = isHomePage && !isScrolled
+    ? {
+        backgroundColor: 'transparent',
+        borderBottom: '1px solid transparent',
+        backdropFilter: 'blur(5px)',
+        WebkitBackdropFilter: 'blur(5px)'
+      }
+    : {};
+
   return (
-    <header className={headerClass}>
+    <header className={headerClass} style={headerStyle}>
       <div className="logo">
         <NavLink to="/">
           <img
