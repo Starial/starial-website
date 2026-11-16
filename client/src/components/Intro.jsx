@@ -14,34 +14,46 @@ export default function Intro() {
   }, [index]);
   return (
     <section className="intro-part">
-      <div className="intro">
-        <div className="intro-heading" data-aos="slide-right">
-          <div>
-            <h2>Get</h2>
-            <motion.div
-              key={index}
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="word-carousel"
-            >
-              {words[index]}
-            </motion.div>
-            <h2>at your doorstep.</h2>
+      <video 
+        className="hero-video-background" 
+        autoPlay 
+        loop 
+        muted 
+        playsInline
+      >
+        <source src="/hero-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="intro-content-overlay">
+        <div className="intro">
+          <div className="intro-heading" data-aos="slide-right">
+            <div>
+              <h2>Get</h2>
+              <motion.div
+                key={index}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -20, opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="word-carousel"
+              >
+                {words[index]}
+              </motion.div>
+              <h2>at your doorstep.</h2>
+            </div>
+            <p>Starial delivers your favorite stationery within an hour.</p>
+            <Link to="https://play.google.com/store/apps/details?id=com.starial.stationery&hl=en-US&pli=1">
+              Download App
+            </Link>
           </div>
-          <p>Starial delivers your favorite stationery within an hour.</p>
-          <Link to="https://play.google.com/store/apps/details?id=com.starial.stationery&hl=en-US&pli=1">
-            Download App
-          </Link>
         </div>
-      </div>
-      <div className="intro-img">
-        {/* <img src="Starial-intro.png" alt="" /> */}
-        <img
-          src="https://res.cloudinary.com/dgkv2gft7/image/upload/v1743687934/Starial-intro_h1iwvs.png"
-          alt="Starial Intro Image"
-        />
+        <div className="intro-img">
+          {/* <img src="Starial-intro.png" alt="" /> */}
+          <img
+            src="https://res.cloudinary.com/dgkv2gft7/image/upload/v1743687934/Starial-intro_h1iwvs.png"
+            alt="Starial Intro Image"
+          />
+        </div>
       </div>
     </section>
   );
