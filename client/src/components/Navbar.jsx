@@ -42,6 +42,9 @@ export default function Navbar() {
     ? `head-section ${isScrolled ? "scrolled" : "transparent"}`
     : "head-section scrolled";
 
+  // Debug logging
+  console.log('Navbar Debug:', { isHomePage, isScrolled, headerClass, pathname: location.pathname });
+
   // Inline styles to force transparency - overrides all CSS
   const headerStyle = isHomePage && !isScrolled
     ? {
