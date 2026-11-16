@@ -1,93 +1,61 @@
 @use "./index.scss" as index;
 
-/* Cache bust v6 - Transparent header fix */
+$header-height: 10vh;
+
 .head-section {
   width: 100%;
-  height: 10vh;
-  position: sticky;
+  height: $header-height;
   position: -webkit-sticky;
+  position: sticky;
   top: 0;
   left: 0;
   z-index: 1000;
   @include index.flex-box;
   padding: 1rem;
-  transition: all 0.3s ease-in-out;
-  // No default background - let inline styles control it
-  
+  background-color: white;
+  border-bottom: 1px solid #f0f0f0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+
   &.transparent {
-    border-bottom: 1px solid transparent !important;
-    background-color: transparent !important;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    box-shadow: none !important;
-    
+    border-bottom-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+
     .logo img {
-      filter: brightness(0) invert(1);
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85));
     }
-    
-    .navbar .links li a {
-      color: white !important;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      
-      &::after {
-        background-color: white !important;
-      }
+
+    .navbar .menu .menu-icon {
+      color: white;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85));
     }
-    
-    .navbar .links .active {
-      border-bottom: 2px solid white !important;
-    }
-    
-    .navbar .links .contact-us {
-      background-color: white !important;
-      color: index.$astros-navy !important;
-      border: 2px solid white !important;
-      text-shadow: none;
-      
-      &:hover {
-        background-color: transparent !important;
-        color: white !important;
-        border: 2px solid white !important;
-      }
-    }
-    
-    .menu-icon {
-      color: white !important;
-    }
-  }
-  
-  &.scrolled {
-    background-color: white !important;
-    border-bottom: 1px solid #f0f0f0 !important;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    backdrop-filter: none;
-    
-    .logo img {
-      filter: none;
-    }
-    
-    .navbar .links li a {
-      color: index.$astros-navy !important;
-      text-shadow: none;
-      
-      &::after {
-        background-color: index.$astros-navy !important;
-      }
-    }
-    
-    .navbar .links .active {
-      border-bottom: 2px solid index.$astros-navy !important;
-    }
-    
-    .navbar .links .contact-us {
-      background-color: index.$astros-navy !important;
-      color: white !important;
-      border: 2px solid transparent !important;
-      
-      &:hover {
-        background-color: transparent !important;
-        color: index.$astros-navy !important;
-        border: 2px solid index.$astros-navy !important;
+
+    @media (width > 1000px) {
+      .navbar .links {
+        li a {
+          color: white;
+          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 6px rgba(0, 0, 0, 0.65);
+
+          &::after {
+            background-color: white;
+          }
+        }
+
+        .active {
+          border-bottom-color: white;
+        }
+
+        .contact-us {
+          background-color: white;
+          color: index.$astros-navy;
+
+          &:hover {
+            background-color: index.$astros-navy;
+            color: white;
+          }
+        }
       }
     }
   }
@@ -138,8 +106,8 @@
         padding: 0.6rem 1rem;
         border-radius: 5px;
         color: index.$alice-blue;
-        -webkit-transition: all 0.2s ease-in;
-        transition: all 0.2s ease-in;
+        transition: background-color 0.2s ease-in, color 0.2s ease-in,
+          border-color 0.2s ease-in;
         border: 2px solid transparent;
         &:hover {
           background-color: transparent;
@@ -176,9 +144,6 @@
   }
   @media (width<=1000px) {
     justify-content: space-between;
-    position: sticky;
-    top: 0;
-    left: 0;
     .logo {
       width: 50%;
       a img {
@@ -199,9 +164,9 @@
       z-index: 1;
       .links {
         width: 40%;
-        height: calc(100vh - 10vh);
+        height: calc(100vh - #{$header-height});
         position: fixed;
-        top: 10%;
+        top: $header-height;
         left: 0;
         bottom: 0;
         flex-direction: column;
@@ -259,14 +224,17 @@
 
 .home-page {
   width: 100%;
+  // Pull the hero behind the sticky header, which still occupies space in the layout.
+  margin-top: -$header-height;
 }
 
 // ------------------- INTRO STYLES -----------------------
 .intro-part {
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   position: relative;
   overflow: hidden;
+  background-color: index.$astros-navy;
   
   .hero-video-background {
     position: absolute;

@@ -42,7 +42,7 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <ToastContainer theme="light" draggable />
-      <Navbar />
+      <Navbar isLoading={loading} />
       {loading ? (
         <Loading />
       ) : (

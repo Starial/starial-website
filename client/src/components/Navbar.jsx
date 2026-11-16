@@ -1,11 +1,10 @@
-// import { useEffect, useRef, useState } from "react";
 import { useEffect, useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { CiMenuFries } from "react-icons/ci";
 import { NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../store/auth";
 
-export default function Navbar() {
+export default function Navbar({ isLoading }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
@@ -26,46 +25,22 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // On home page: transparent unless scrolled. On other pages: always solid
-  const headerClass = isHomePage 
-    ? `head-section ${isScrolled ? "scrolled" : "transparent"}`
-    : "head-section scrolled";
-
-  // Debug logging
-  console.log('Navbar Debug:', { isHomePage, isScrolled, headerClass, pathname: location.pathname });
-
-  // Inline styles to force transparency - overrides all CSS
-  const headerStyle = isHomePage && !isScrolled
-    ? {
-        backgroundColor: 'transparent',
-        borderBottom: 'none',
-        backdropFilter: 'blur(8px)',
-        WebkitBackdropFilter: 'blur(8px)',
-        boxShadow: 'none'
-      }
-    : {
-        backgroundColor: 'white',
-        borderBottom: '1px solid #f0f0f0',
-        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)'
-      };
+  const isTransparent = isHomePage && !isLoading && !isScrolled;
 
   return (
-    <header className={headerClass} style={headerStyle}>
+    <header className={isTransparent ? "head-section transparent" : "head-section"}>
       <div className="logo">
         <NavLink to="/">
           <img
-            src="https://res.cloudinary.com/dgkv2gft7/image/upload/v1743688541/starial-black-logo_u6xvbw.png"
+            src={isTransparent ? "/starial-white-logo.png" : "/starial-black-logo.png"}
             alt="Starial LOGO"
           />
         </NavLink>
