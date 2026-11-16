@@ -45,7 +45,7 @@ export default function Navbar() {
   // Inline styles to force transparency - overrides all CSS
   const headerStyle = isHomePage && !isScrolled
     ? {
-        backgroundColor: 'rgba(0, 0, 0, 0) !important',
+        backgroundColor: 'transparent',
         borderBottom: 'none',
         backdropFilter: 'blur(8px)',
         WebkitBackdropFilter: 'blur(8px)',
