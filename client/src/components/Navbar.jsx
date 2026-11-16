@@ -49,7 +49,6 @@ export default function Navbar() {
           <img
             src="https://res.cloudinary.com/dgkv2gft7/image/upload/v1743688541/starial-black-logo_u6xvbw.png"
             alt="Starial LOGO"
-            style={isHomePage && !isScrolled ? { filter: 'brightness(0) invert(1)' } : {}}
           />
         </NavLink>
       </div>
