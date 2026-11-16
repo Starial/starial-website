@@ -42,15 +42,20 @@ export default function Navbar() {
     ? `head-section ${isScrolled ? "scrolled" : "transparent"}`
     : "head-section scrolled";
 
-  // Inline styles to force transparency
+  // Inline styles to force transparency - overrides all CSS
   const headerStyle = isHomePage && !isScrolled
     ? {
-        backgroundColor: 'transparent',
-        borderBottom: '1px solid transparent',
-        backdropFilter: 'blur(5px)',
-        WebkitBackdropFilter: 'blur(5px)'
+        backgroundColor: 'rgba(0, 0, 0, 0) !important',
+        borderBottom: 'none',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
+        boxShadow: 'none'
       }
-    : {};
+    : {
+        backgroundColor: 'white',
+        borderBottom: '1px solid #f0f0f0',
+        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)'
+      };
 
   return (
     <header className={headerClass} style={headerStyle}>
