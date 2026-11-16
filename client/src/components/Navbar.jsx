@@ -2,12 +2,14 @@
 import { useEffect, useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { CiMenuFries } from "react-icons/ci";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../store/auth";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
   const toggleMenu = () => setIsOpen(!isOpen);
   const [isAdmin, setIsAdmin] = useState(false);
   const { token } = useAuth();
@@ -35,17 +37,19 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // On home page: transparent unless scrolled. On other pages: always solid
+  const headerClass = isHomePage 
+    ? `head-section ${isScrolled ? "scrolled" : "transparent"}`
+    : "head-section scrolled";
+
   return (
-    <header className={`head-section ${isScrolled ? "scrolled" : ""}`}>
+    <header className={headerClass}>
       <div className="logo">
         <NavLink to="/">
           <img
-            src={isScrolled 
-              ? "https://res.cloudinary.com/dgkv2gft7/image/upload/v1743688541/starial-black-logo_u6xvbw.png"
-              : "https://res.cloudinary.com/dgkv2gft7/image/upload/v1743688541/starial-black-logo_u6xvbw.png"
-            }
+            src="https://res.cloudinary.com/dgkv2gft7/image/upload/v1743688541/starial-black-logo_u6xvbw.png"
             alt="Starial LOGO"
-            style={!isScrolled ? { filter: 'brightness(0) invert(1)' } : {}}
+            style={isHomePage && !isScrolled ? { filter: 'brightness(0) invert(1)' } : {}}
           />
         </NavLink>
       </div>

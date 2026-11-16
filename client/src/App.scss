@@ -10,30 +10,38 @@
   z-index: 1000;
   @include index.flex-box;
   padding: 1rem;
-  border-bottom: 1px solid transparent;
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
   transition: all 0.3s ease-in-out;
   
-  .navbar .links li a {
-    color: white !important;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  }
-  
-  .navbar .links .active {
-    border-bottom: 2px solid white;
-  }
-  
-  .navbar .links .contact-us {
-    background-color: white !important;
-    color: index.$astros-navy !important;
-    border: 2px solid white !important;
-    text-shadow: none;
+  &.transparent {
+    border-bottom: 1px solid transparent;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     
-    &:hover {
-      background-color: transparent !important;
+    .navbar .links li a {
       color: white !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    .navbar .links .active {
+      border-bottom: 2px solid white;
+    }
+    
+    .navbar .links .contact-us {
+      background-color: white !important;
+      color: index.$astros-navy !important;
       border: 2px solid white !important;
+      text-shadow: none;
+      
+      &:hover {
+        background-color: transparent !important;
+        color: white !important;
+        border: 2px solid white !important;
+      }
+    }
+    
+    .menu-icon {
+      color: white !important;
     }
   }
   
@@ -41,11 +49,9 @@
     background-color: white;
     border-bottom: 1px solid #f0f0f0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    backdrop-filter: none;
     
     .navbar .links li a {
-      color: index.$astros-navy !important;
-      text-shadow: none;
+      color: index.$astros-navy;
     }
     
     .navbar .links .active {
